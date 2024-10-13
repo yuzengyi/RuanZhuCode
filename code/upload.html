@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ArtMentor</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: radial-gradient(ellipse at center,#fffeea 0%,#fffeea 35%,#b7e8eb 100%);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #fffbf2;
+        padding: 25px 50px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        border: 2px solid #d4b483;
+        max-width: 400px;
+        width: 100%;
+      }
+      .brand {
+        font-family: 'Brush Script MT', cursive;
+        font-size: 2em;
+        color: #8a6d3b;
+        position: absolute;
+        top: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fffbf2;
+        padding: 0 10px;
+      }
+      h1 {
+        margin-bottom: 25px;
+        color: #8a6d3b;
+        font-size: 1.8em;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .file-input {
+        margin-bottom: 25px;
+        position: relative;
+        width: 100%;
+      }
+      .file-input input[type="file"] {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+      }
+      .file-input-label {
+        display: block;
+        padding: 12px;
+        background-color: #f3e5c8;
+        color: #704214;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s ease;
+        border: 1px solid #c7a17a;
+      }
+      .file-input-label:hover {
+        background-color: #e8c496;
+      }
+      input[type="submit"] {
+        padding: 12px 25px;
+        background-color: #a4c49a;
+        color: #3e4a35;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 1em;
+      }
+      input[type="submit"]:hover {
+        background-color: #8fa87e;
+      }
+      .loading-overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 15px;
+        justify-content: center;
+        align-items: center;
+      }
+      .loading-overlay.active {
+        display: flex;
+      }
+      .loading-spinner {
+        border: 6px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 6px solid #8a6d3b;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="brand">ArtMentor</div>
+      <h1>Upload an Artwork for Analysis</h1>
+      <form id="uploadForm" method="post" enctype="multipart/form-data">
+        <div class="file-input">
+          <label class="file-input-label" for="file">Choose an Artwork</label>
+          <input type="file" id="file" name="file" required>
+        </div>
+        <input type="submit" value="Upload">
+      </form>
+      <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
+    <script>
+      const form = document.getElementById('uploadForm');
+      const loadingOverlay = document.getElementById('loadingOverlay');
+      form.addEventListener('submit', function() {
+        loadingOverlay.classList.add('active');
+      });
+    </script>
+  </body>
+</html>
